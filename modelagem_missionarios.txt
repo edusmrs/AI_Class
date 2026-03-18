@@ -1,0 +1,43 @@
+Descrição do problema:
+
+Três missionários e três canibais estão à beira de um rio e dispõem de um barco com capacidade para apenas duas pessoas. O problema consiste em determinar as tripulações de uma série de travessias de forma que todo o grupo atravesse para o outro lado do rio, respeitando a condição de que, em nenhum momento, os canibais sejam mais numerosos do que os missionários em qualquer uma das margens.
+
+
+Características do problema:
+
+Espaço de busca finito e pequeno (combinações entre 0 e 3);
+O estado final é conhecido (0 pessoas na origem e 6 pessoas no destino, incluindo o barco);
+Com restrições (canibais devem ser menores do que missionários exceto se n tiver nenhum na margem);
+
+Estados do Problema:
+
+Três variáveis representando apenas a margem origem m (missionários), c (canibais) e b (barco, 1 para origem 0 para destino);
+Estado inicial: m = 3, c = 3, b = 1
+Estados finais: m = 0; c = 0, b = 0
+
+Regras de Transição:
+
+mover(1, 0) -> transportar 1 missionário;
+mover(2, 0) -> transportar 2 missionários;
+mover(0, 1) -> transportar 1 canibal;
+mover(0, 2) -> transportar 2 canibais;
+mover(1, 1) -> transportar 1 missionário e 1 canibal.
+
+
+Mapear as restrições:
+
+Testar se os valores das pessoas não ficam negativos ou maiores que 3
+Testar a margem de origem (se m > 0 então c < m)
+Testar a margem destino (se 3 - m > 0 então 3 - c não pode ser maior que 3 - m, evitando que tenha mais canibais do que missionários
+
+
+No processo de resolução são feitas 3 perguntas:
+
+é valido? alguém foi devorado?
+private boolean estadoValido(int miss, int can) {}
+
+foi visitado? estamos andando em círculos no rio?
+if (!visitados.contains(novoEstado))
+
+é meta? chegaram todos do outro lado?
+public boolean ehMeta() {}
