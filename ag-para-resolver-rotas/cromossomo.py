@@ -83,16 +83,15 @@ class Cromossomo:
             torneio.append(c2)
             torneio.append(c3)
 
-            torneio.sort(key=lambda cromossomo: cromossomo.aptidao, reverse=True)
+
+            # como a nota agora aje como penalidade, reserve=False
+            torneio.sort(key=lambda cromossomo: cromossomo.aptidao, reverse=False)
             selecionado = torneio[0]
             if selecionado not in nova_populacao:
                 nova_populacao.append(selecionado)
                 i+=1
 
             torneio.clear()
-
-        # print("Total de selecionados....", quantidade_selecionados)
-        # print(nova_populacao)
 
 
     @staticmethod
